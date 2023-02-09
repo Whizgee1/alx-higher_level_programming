@@ -1,6 +1,9 @@
 #!/usr/bin/node
+
+const args = process.argv;
 const request = require('request');
-let url = 'http://swapi.co/api/films/' + process.argv[2];
-request(url, function (error, response, body) {
-  console.log(error || JSON.parse(body).title);
+request('https://swapi-api.hbtn.io/api/films/' + args[2], function (err, request) {
+  if (err) throw err;
+  const json = JSON.parse(request.body);
+  console.log(json.title); // Print the HTML for the Google homepage.
 });
